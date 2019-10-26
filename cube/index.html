@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>triangle</title>
+    <link href="css/default.css" rel="stylesheet"/>
+</head>
+<body>
+    <canvas id="renderCanvas" width="1200" height="800"></canvas>
+    <script src="js/main.js"></script>
+    <script id="vertexShader" type="vertexShader">
+        #version 300 es
+        
+        in vec3 a_position;
+        in vec4 a_color;
+
+        out vec4 fColor;
+        
+        void main(){
+            gl_Position = vec4(a_position, 1);
+            fColor = a_color;
+        }
+    </script>
+    <script id="fragmentShader" type="fragmentShader">
+        #version 300 es
+        
+        precision mediump float;
+
+        in vec4 fColor;
+        
+        out vec4 outColor;
+
+        void main(){
+            outColor = fColor;
+        }
+    </script>
+</body>
+</html>

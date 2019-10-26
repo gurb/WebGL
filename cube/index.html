@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>triangle</title>
     <link href="css/default.css" rel="stylesheet"/>
+    <script src="js/gl-matrix.js"></script>
 </head>
 <body>
     <canvas id="renderCanvas" width="1200" height="800"></canvas>
@@ -16,8 +17,13 @@
 
         out vec4 fColor;
         
+        // M V P
+        uniform mat4 u_modelMatrix;
+        uniform mat4 u_viewMatrix;
+        uniform mat4 u_projectionMatrix;
+        
         void main(){
-            gl_Position = vec4(a_position, 1);
+            gl_Position = u_projectionMatrix * u_viewMatrix * u_modelMatrix * vec4(a_position, 1);
             fColor = a_color;
         }
     </script>
